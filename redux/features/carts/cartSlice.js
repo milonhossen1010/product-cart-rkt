@@ -1,3 +1,5 @@
+import { toast } from 'sonner';
+
 const { createSlice } = require('@reduxjs/toolkit');
 
 const cartSlice = createSlice({
@@ -11,13 +13,16 @@ const cartSlice = createSlice({
       );
 
       existingProduct
-        ? alert('The product alreay exist.')
-        : state.push({
+        ? toast.warning("The product already exist in cart.")
+        : (
+          state.push({
             ...action.payload,
             id: Date.now(),
             quantity: 1,
             productId: action.payload.id,
-          });
+          }),
+          toast.success("Product Added Successful!")
+        );
     },
 
     //increasement quantity
@@ -34,6 +39,7 @@ const cartSlice = createSlice({
 
     //remove from cart
     removeFromCart: (state, action) => {
+      toast.info("Remove success!")
       return state.filter(product => product.id !== action.payload);
     },
   },
