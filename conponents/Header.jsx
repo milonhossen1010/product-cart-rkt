@@ -24,6 +24,7 @@ export default function Header() {
 
   //cart item count by js reduce method
   const cartItemNo = carts.reduce((total, product) => total + product.quantity, 0)
+ 
 
 
   return (

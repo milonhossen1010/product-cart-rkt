@@ -1,4 +1,6 @@
+"use client"
 import { addToCart } from "@/redux/features/carts/cartSlice";
+ 
 import { BsBag } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 
@@ -6,13 +8,16 @@ import { useDispatch } from "react-redux";
 
 export default function ProductCard({ product }) {
   const { name, price, image, category } = product || {};
+ 
   //dispatch
   const dispatch = useDispatch()
 
 
   const handleAddToCart = () => {
     //cart item store in redux
-    dispatch(addToCart(product))
+    dispatch(addToCart(product));
+     
+    
   }
 
 
